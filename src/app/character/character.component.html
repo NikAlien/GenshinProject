@@ -1,0 +1,14 @@
+<div id = "title">
+    <h1>{{title}}</h1>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let chara of characters">
+            <button (click)="onSelect(chara)">
+                <span>{{chara.id}}</span>
+                <span>{{chara.name}}</span>
+            </button>
+        </li>
+    </ul>
+    <app-character-detail [chara]="selectedChara"></app-character-detail>
+</div>
