@@ -4,11 +4,10 @@
 <div>
     <ul>
         <li *ngFor="let chara of characters">
-            <button (click)="onSelect(chara)">
-                <span>{{chara.id}}</span>
-                <span>{{chara.name}}</span>
-            </button>
+            <a href="/detail/{{chara.id}}"> {{chara.name}} </a>
         </li>
     </ul>
-    <app-character-detail [chara]="selectedChara"></app-character-detail>
+</div>
+<div>
+    <button>Add</button>
 </div>

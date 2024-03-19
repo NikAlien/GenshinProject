@@ -6,6 +6,11 @@
     <div><span>id: </span>{{chara.id}}</div>
     <div>
         <label for="chara-name">Character name: </label>
-        <input id="chara-name" [(ngModel)]="chara.name" placeholder="name">
+        <input #box id="chara-name" [(ngModel)]="chara.name" placeholder="name">
     </div>
+</div>
+<div>
+
+    <button>Save</button>
+    <button (click)="goBack()">Back</button>
 </div>

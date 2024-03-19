@@ -1,4 +1,5 @@
-import { Character } from "./character/character";
+import { Character } from "../character/character";
+
 
 export const Charas: Character[] = [
     {id: 11, name: 'Razor', currentLevel: 90, vision: 'electro'},
