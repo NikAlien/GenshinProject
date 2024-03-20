@@ -4,6 +4,7 @@ import { NgIf, Location, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
+import { SaveService } from '../services/save.service';
 
 @Component({
   standalone: true,
@@ -27,11 +28,18 @@ export class CharacterDetailComponent {
 
     getCharacter(): void {
       const id = Number(this.route.snapshot.paramMap.get('id'));
-      this.charaService.getCharacter(id)
-        .subscribe(chara => this.chara = chara);
+      this.chara = this.charaService.getCharacter(id);
     }
 
     goBack(): void {
       this.location.back();
+    }
+
+    saveGoBack(): void {
+      if(this.chara){
+        let charaID = this.charaService.updateCharacter(this.chara);
+        SaveService.save(this.charaService);
+        this.goBack();
+      }
     }
 }

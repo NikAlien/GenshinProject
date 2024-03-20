@@ -2,12 +2,22 @@
     <h1>{{title}}</h1>
 </div>
 <div>
-    <ul>
+    <select>
+        <option value="default">Default</option>
+        <option value="level">By Level</option>
+        <option value="alpha">By Name</option>
+    </select>
+    <button>Add</button>
+</div>
+<div id="list">
+    <ul class="charas">
         <li *ngFor="let chara of characters">
-            <a href="/detail/{{chara.id}}"> {{chara.name}} </a>
+            <a href="/detail/{{chara.id}}"> {{chara.name}} </a> 
+            <img src="../assets/image/{{chara.vision}}.png" class="image">
+            <p class="level"><strong>Lvl </strong>{{chara.currentLevel}}</p>
+            <p class="affili"><strong>Affiliation: </strong> {{chara.affiliation}}</p>
+            <hr>
         </li>
     </ul>
 </div>
-<div>
-    <button>Add</button>
-</div>
+

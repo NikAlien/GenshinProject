@@ -9,9 +9,23 @@ body {
     max-height: 100px;
     height: auto;
 }
-main {
-    text-align: center;
-    display: block;
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 30%;
+    height: 50%;
 }
 
-
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(159, 187, 186, 0), rgba(159, 187, 186, 100));
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }

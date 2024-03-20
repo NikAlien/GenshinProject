@@ -1,37 +1,54 @@
 import { Injectable } from '@angular/core';
+import { CHARACTERS } from './mock-character';
 import { Character } from '../character/character';
-import { Charas } from './mock-character';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs';
+import { Savable } from './savable';
+import { SaveService } from './save.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharacterService {
-  private charasUrl = 'api/characters'
+export class CharacterService implements Savable{
 
-  constructor(private http: HttpClient) { }
+  saveData(): void {
+    window.sessionStorage.setItem('CHARASERVICE', JSON.stringify(CHARACTERS));
+  }
+
+  loadData(): void {
+    let saveState: string | null = window.sessionStorage.getItem('CHARASERVICE');
+    if (saveState != null) {
+      let result: Character[] = JSON.parse(saveState);
+      CHARACTERS.splice(0, CHARACTERS.length);
+      result.forEach(entity => CHARACTERS.push(entity))
+    }
+  }
+  constructor() { 
+    SaveService.load(this);
+  }
 
   getCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.charasUrl)
-    .pipe(
-      catchError(this.handleError<Character[]>('getCharacters', []))
-    );
+    const charas = of(CHARACTERS)
+    return charas;
   }
 
-  getCharacter(id: number): Observable<Character>{
-    const url = `${this.charasUrl}/${id}`;
-    return this.http.get<Character>(url).pipe(
-      catchError(this.handleError<Character>('getCharacter id = ${id}'))
-    );
+  getCharacter(id: number): Character{
+    for(let i = 0; i < CHARACTERS.length; i++)
+      if(CHARACTERS[i].id === id)
+        return CHARACTERS[i];
+    return {id: -1, name: '', currentLevel: -1, vision: '', affiliation: ''};
   }
 
-  private handleError<T>(operation = 'operation', result?: T){
-    return (error: any) : Observable<T> =>{
-      console.error(error);
-      // need message service here to print on console
-      return of(result as T);
-    };
+  addCharacter(character: Character): number {
+    character.id = CHARACTERS.length + 1;
+    CHARACTERS.push(character);
+    return character.id;
+  }
+
+  updateCharacter(character: Character): number {
+    let index = CHARACTERS.findIndex(chara => chara.id === character.id);
+    CHARACTERS[index] = character;
+    return character.id;
   }
 }

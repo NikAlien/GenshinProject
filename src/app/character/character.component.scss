@@ -1,3 +1,109 @@
+h1 {
+    margin: 0px;
+    color: #081c2d;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 #title {
     background-color: #BCE3E8;
+    text-align: center;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+    box-shadow: 7px 7px 10px #34B1C7;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #081c2d;
+    color: #cfeaed;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #34B1C7;
+    margin-left: 5%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button:hover {
+    background-color: #EBDB62;
+    color: #081c2d;
+}
+
+select {
+    margin-left: 7%;
+    width: 70%;
+    height: 25.5px;
+    border: none;
+    background-color: #081c2d;
+    color: #cfeaed;
+    box-shadow: 3px 3px 3px #34B1C7;
+    border-radius: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #BCE3E8;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px #34B1C7;
+    height: 250px;
+    overflow: scroll;
+}
+
+.charas {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+a:link {
+    text-decoration: none;
+    color: #081c2d;
+    font-size: 35px;
+    text-shadow: 2px 2px 2px #77cddd;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+a:hover {
+    color: #EBDB62 !important;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #EBDB62 !important;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #081c2d;
+}
+
+.image {
+    width: 35px;
+}
+
+.level {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.affili {
+    margin-top: 0px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+hr {
+    border: solid #081c2d;
 }
