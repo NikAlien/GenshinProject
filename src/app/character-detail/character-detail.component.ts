@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Character } from '../character/character';
-import { NgIf, Location, CommonModule } from '@angular/common';
+import { NgIf, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
@@ -19,8 +19,7 @@ export class CharacterDetailComponent {
     inputValue = "";
 
     constructor( private route: ActivatedRoute,
-      private charaService: CharacterService,
-      private location: Location) {}
+      private charaService: CharacterService) {}
     
     ngOnInit(): void {
       this.getCharacter();
@@ -32,7 +31,7 @@ export class CharacterDetailComponent {
     }
 
     goBack(): void {
-      this.location.back();
+      window.location.replace('/characterList');
     }
 
     saveGoBack(): void {

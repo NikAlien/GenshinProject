@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { CHARACTERS } from './mock-character';
 import { Character } from '../character/character';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs';
 import { Savable } from './savable';
 import { SaveService } from './save.service';
 
@@ -41,7 +39,7 @@ export class CharacterService implements Savable{
   }
 
   addCharacter(character: Character): number {
-    character.id = CHARACTERS.length + 1;
+    character.id = Math.max.apply(Math, CHARACTERS.map(function(chara) { return chara.id; })) + 1;
     CHARACTERS.push(character);
     return character.id;
   }
