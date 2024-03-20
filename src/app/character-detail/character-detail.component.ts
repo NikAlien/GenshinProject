@@ -42,4 +42,12 @@ export class CharacterDetailComponent {
         this.goBack();
       }
     }
+
+    deleteGoBack(): void {
+      if(this.chara){
+        let charaID = this.charaService.deleteCharacter(this.chara);
+        SaveService.save(this.charaService);
+        this.goBack();
+      }
+    }
 }

@@ -51,4 +51,13 @@ export class CharacterService implements Savable{
     CHARACTERS[index] = character;
     return character.id;
   }
+
+  deleteCharacter(character: Character): boolean {
+    let index = CHARACTERS.findIndex(chara => chara.id == character.id);
+    if (index < 0) {
+      return false;
+    }
+    CHARACTERS.splice(index, 1);
+    return true;
+  }
 }

@@ -1,7 +1,7 @@
 <div id = "title">
     <h1>{{title}}</h1>
 </div>
-<div *ngIf="chara">
+<div *ngIf="chara" id="detail">
     <h2>{{chara.name}} Details</h2>
     <div><span>id: </span>{{chara.id}}</div>
     <div>
@@ -9,7 +9,8 @@
         <input #box id="chara-name" [(ngModel)]="chara.name" placeholder="name">
     </div>
 </div>
-<div>
-    <button (click)="saveGoBack()">Save</button>
+<div style="display: flex; flex-wrap: nowrap; justify-content: space-around;">
     <button (click)="goBack()">Back</button>
+    <button (click)="deleteGoBack()">Delete</button>
+    <button (click)="saveGoBack()">Save</button>
 </div>
