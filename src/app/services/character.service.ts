@@ -36,6 +36,11 @@ export class CharacterService implements Savable{
     return charas;
   }
 
+  sortByName(): Observable<Character[]> {
+    const charas = of(CHARACTERS.toSorted((a, b) => a.name > b.name? 1 : -1))
+    return charas;
+  }
+
   getCharacter(id: number): Character{
     for(let i = 0; i < CHARACTERS.length; i++)
       if(CHARACTERS[i].id === id)

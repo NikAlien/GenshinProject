@@ -36,6 +36,9 @@ export class CharacterComponent {
       if(this.sortBy === "Level")
         this.charaService.sortByLevel()
           .subscribe(characters => this.characters = characters);
+      if(this.sortBy === "Name")
+        this.charaService.sortByName()
+          .subscribe(characters => this.characters = characters);
       
     }
 
