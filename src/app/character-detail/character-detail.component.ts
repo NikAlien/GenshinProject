@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
 import { SaveService } from '../services/save.service';
+import { CharacterValidation } from '../character/character';
 
 @Component({
   standalone: true,
@@ -17,6 +18,8 @@ export class CharacterDetailComponent {
     chara: Character | undefined;
     title = "Character Detail";
     inputValue = "";
+    errorMessage = "";
+    
 
     constructor( private route: ActivatedRoute,
       private charaService: CharacterService) {}
@@ -34,11 +37,18 @@ export class CharacterDetailComponent {
       window.location.replace('/characterList');
     }
 
+    getErrorMessage(): string {
+      return this.errorMessage;
+    }
+
     saveGoBack(): void {
       if(this.chara){
-        let charaID = this.charaService.updateCharacter(this.chara);
-        SaveService.save(this.charaService);
-        this.goBack();
+        this.errorMessage = CharacterValidation.validate(this.chara);
+        if(this.errorMessage.trim().length <= 0){
+          let charaID = this.charaService.updateCharacter(this.chara);
+          SaveService.save(this.charaService);
+          this.goBack();
+        }
       }
     }
 

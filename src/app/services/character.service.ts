@@ -39,7 +39,11 @@ export class CharacterService implements Savable{
   }
 
   addCharacter(character: Character): number {
-    character.id = Math.max.apply(Math, CHARACTERS.map(function(chara) { return chara.id; })) + 1;
+    if(CHARACTERS.length === 0)
+      character.id = 1;
+    else 
+      character.id = Math.max.apply(Math, CHARACTERS.map(function(chara) { return chara.id; })) + 1;
+    
     CHARACTERS.push(character);
     return character.id;
   }

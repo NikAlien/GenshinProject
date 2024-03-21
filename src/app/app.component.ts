@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 
 
-// TODO: 1. Design finish (form)
-// 2. validation and error messages
+// TODO: 2. validation and error messages ?? we'll see 
 // 3. tests
 // 4. sort by ...
 

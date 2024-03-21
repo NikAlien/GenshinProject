@@ -2,24 +2,32 @@
     <h1>{{title}}</h1>
 </div>
 <div *ngIf="chara" id="detail">
-    <h2>{{chara.name}} Details</h2>
-    <div>
-        <label for="chara-name">Character name: </label>
-        <input required for="chara-name" [(ngModel)]="chara.name" placeholder="name"><br>
-        <label for="chara-level">Current level: </label> 
-        <input required id="chara-level" [(ngModel)]="chara.currentLevel" placeholder="level"> <br>
-        <label for="chara-vision">Vision: </label> 
-        <select required id="chara-vision" [(ngModel)]="chara.vision">
-            <option value="electro">electro</option>
-            <option value="anemo">anemo</option>
-            <option value="cryo">cryo</option>
-            <option value="dendro">dendro</option>
-            <option value="geo">geo</option>
-            <option value="hydro">hydro</option>
-            <option value="pyro">pyro</option>
-        </select> <br>
-        <label for="chara-affiliation">Affiliation: </label>
-        <input required id="chara-affiliation" [(ngModel)]="chara.affiliation" placeholder="affiliation"> <br>
+    <div style="padding-top: 12%;">
+        <div class="labels">
+            <label for="chara-name">Character name: </label>
+            <input for="chara-name" [(ngModel)]="chara.name" placeholder="name"><br>
+        </div>
+        <div class="labels">
+            <label for="chara-level">Current level: </label> 
+            <input id="chara-level" [(ngModel)]="chara.currentLevel" placeholder="level" required> <br>
+        </div>
+        <div class="labels"> 
+            <label for="chara-vision">Vision: </label> 
+            <select required id="chara-vision" [(ngModel)]="chara.vision">
+                <option value="electro">electro</option>
+                <option value="anemo">anemo</option>
+                <option value="cryo">cryo</option>
+                <option value="dendro">dendro</option>
+                <option value="geo">geo</option>
+                <option value="hydro">hydro</option>
+                <option value="pyro">pyro</option>
+            </select> <br>
+        </div>
+        <div class="labels">
+            <label for="chara-affiliation">Affiliation: </label>
+            <input required id="chara-affiliation" [(ngModel)]="chara.affiliation" placeholder="affiliation"> <br>
+        </div>
+        <span><b>{{getErrorMessage()}}</b></span>
     </div>
 </div>
 <div style="display: flex; flex-wrap: nowrap; justify-content: space-around;">
