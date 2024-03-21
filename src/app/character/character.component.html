@@ -2,10 +2,10 @@
     <h1>{{title}}</h1>
 </div>
 <div>
-    <select>
-        <option value="default">Default</option>
-        <option value="level">By Level</option>
-        <option value="alpha">By Name</option>
+    <select id="sortBy" [(ngModel)]="sortBy" onchange="getCharas()">
+        <option value="Default">Default</option>
+        <option value="Level">By Level</option>
+        <option value="Alpha">By Name</option>
     </select>
     <button (click)="addNewCharacter()">Add</button>
 </div>

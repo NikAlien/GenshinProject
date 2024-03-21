@@ -31,6 +31,11 @@ export class CharacterService implements Savable{
     return charas;
   }
 
+  sortByLevel(): Observable<Character[]> {
+    const charas = of(CHARACTERS.toSorted((a, b) => b.currentLevel - a.currentLevel))
+    return charas;
+  }
+
   getCharacter(id: number): Character{
     for(let i = 0; i < CHARACTERS.length; i++)
       if(CHARACTERS[i].id === id)

@@ -21,6 +21,7 @@ import { SaveService } from '../services/save.service';
 
 export class CharacterComponent {
     title = "My Characters";
+    sortBy = "Default";
     characters: Character[] = [];
 
     constructor(private charaService: CharacterService) {}
@@ -29,8 +30,13 @@ export class CharacterComponent {
     }
 
     getCharas(): void {
-      this.charaService.getCharacters()
+      if(this.sortBy === "Default")
+        this.charaService.getCharacters()
           .subscribe(characters => this.characters = characters);
+      if(this.sortBy === "Level")
+        this.charaService.sortByLevel()
+          .subscribe(characters => this.characters = characters);
+      
     }
 
     addNewCharacter(): void {
