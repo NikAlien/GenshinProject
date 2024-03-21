@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CharacterDetailComponent } from './character-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CHARACTERS } from '../services/mock-character';
 
 describe('CharacterDetailComponent', () => {
   let component: CharacterDetailComponent;
@@ -8,7 +9,7 @@ describe('CharacterDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CharacterDetailComponent]
+      imports: [CharacterDetailComponent, RouterTestingModule]
     })
     .compileComponents();
     

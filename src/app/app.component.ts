@@ -3,7 +3,6 @@ import { ViewEncapsulation } from '@angular/core';
 
 
 // TODO: 2. validation and error messages ?? we'll see 
-// 3. tests
 // 4. sort by ...
 
 @Component({
