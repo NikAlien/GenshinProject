@@ -14,7 +14,9 @@ export class CharacterValidation{
             return "Please give an affiliation";
         if(chara.vision.trim().length <= 0)
             return "Please choose a vision";
-        if(Number.isInteger(chara.currentLevel) || Number(chara.currentLevel) <= -1)
+        if(!/^[0-9]*$/.test(chara.currentLevel.toString()))
+            return "Please give a valid numberr";
+        if(Number(chara.currentLevel) <= -1)
             return "Please give a valid number";
         return ""
     }
