@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   2. CRUD operations
   3. Validations
   4. Tests
-  5. - Back-end TBA
+- 5. Back-end TBA
 ```
 
 ## Development server
