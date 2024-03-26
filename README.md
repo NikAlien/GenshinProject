@@ -9,11 +9,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ```diff
 ## Currrently implemented:
-  + User Interface
-  + CRUD operations
-  + Validations
-  + Tests
-  - Back-end TBA
++ User Interface
++ CRUD operations
++ Validations
++ Tests
+- Back-end TBA
 ```
 
 ## Development server
