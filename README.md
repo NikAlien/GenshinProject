@@ -2,6 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
 
+* Work in progress
+* Using Angular -> front-end, Java-Spring -> back-end
+* The project allows for users to see the characters' details from the game Genshin Impact and eventually share their own characters and builds. 
+<img width="1440" alt="Captură de ecran din 2024-03-26 la 08 06 59" src="https://github.com/NikAlien/GenshinProject/assets/115424518/097c5c08-8f23-431b-94d7-6397dd3f5291">
+
+```diff
+## Currrently implemented:
++ User Interface
++ CRUD operations
++ Validations
++ Tests
+- Back-end TBA
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
