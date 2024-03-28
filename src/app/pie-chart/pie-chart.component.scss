@@ -13,17 +13,19 @@ h1 {
     border-radius: 25px;
     box-shadow: 7px 7px 10px #34B1C7;
     margin-bottom: 10px;
+    width: 97%;
 }
 
 #detail {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #BCE3E8;
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
     border-radius: 25px;
     box-shadow: 10px 10px 10px #34B1C7;
-    height: 250px;
-    overflow: scroll;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 330px;
+    width: 110%;
 }

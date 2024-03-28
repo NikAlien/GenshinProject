@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CharacterService } from '../services/character.service';
-import { Character } from '../character/character';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData } from 'chart.js';
 
@@ -12,15 +11,10 @@ import { ChartData } from 'chart.js';
   imports: [BaseChartDirective]
 })
 export class PieChartComponent {
-  title = 'Chart of Data';
+  title = 'Data Chart';
 
 
   pieChartData: ChartData<'pie', {key: string, value: number} []> = {
-    datasets: [{
-      type: 'pie',
-      label: 'Visions',
-      data: []
-    }],
     labels: [
       'Anemo',
       'Cryo',
@@ -29,7 +23,12 @@ export class PieChartComponent {
       'Geo',
       'Hydro',
       'Pyro'
-    ]
+    ],
+    datasets: [{
+      type: 'pie',
+      label: 'Vision',
+      data: []
+    }]
   };
 
   constructor(private charaService : CharacterService) {}
