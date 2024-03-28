@@ -41,6 +41,11 @@ export class CharacterService implements Savable{
     return charas;
   }
 
+  filterCharactersVision(vision: string): Character[] {
+    const charas = CHARACTERS.filter((chara) => chara.vision === vision)
+    return charas;
+  }
+
   getCharacter(id: number): Character{
     for(let i = 0; i < CHARACTERS.length; i++)
       if(CHARACTERS[i].id === id)

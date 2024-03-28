@@ -9,6 +9,21 @@ body {
     max-height: 100px;
     height: auto;
 }
+
+#userLogo {
+    position: relative;
+    max-width: 2.5%;
+    left: 70%;
+    padding-bottom: 20px;
+}
+
+#pieChartLogo {
+    position: relative;
+    max-width: 2.5%;
+    left: 72%;
+    padding-bottom: 20px;
+}
+
 .center {
     position: absolute;
     top: 45%;

@@ -15,7 +15,7 @@ export class CharacterValidation{
         if(chara.vision.trim().length <= 0)
             return "Please choose a vision";
         if(!/^[0-9]*$/.test(chara.currentLevel.toString()) || Number(chara.currentLevel) > 90 || chara.currentLevel.toString().length <= 0)
-            return "Please give a valid numberr";
+            return "Please give a valid number";
         return ""
     }
 }
