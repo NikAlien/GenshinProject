@@ -5,11 +5,11 @@
     <div style="padding-top: 12%;">
         <div class="labels">
             <label for="chara-name">Character name: </label>
-            <input for="chara-name" [(ngModel)]="chara.name" placeholder="name"><br>
+            <input for="chara-name" [(ngModel)]="chara.name" placeholder="name">
         </div>
         <div class="labels">
             <label for="chara-level">Current level: </label> 
-            <input id="chara-level" [(ngModel)]="chara.currentLevel" placeholder="level" required> <br>
+            <input id="chara-level" [(ngModel)]="chara.currentLevel" placeholder="level" required>
         </div>
         <div class="labels"> 
             <label for="chara-vision">Vision: </label> 
@@ -21,11 +21,11 @@
                 <option value="geo">geo</option>
                 <option value="hydro">hydro</option>
                 <option value="pyro">pyro</option>
-            </select> <br>
+            </select>
         </div>
         <div class="labels">
             <label for="chara-affiliation">Affiliation: </label>
-            <input required id="chara-affiliation" [(ngModel)]="chara.affiliation" placeholder="affiliation"> <br>
+            <input required id="chara-affiliation" [(ngModel)]="chara.affiliation" placeholder="affiliation">
         </div>
         <span><b>{{getErrorMessage()}}</b></span>
     </div>

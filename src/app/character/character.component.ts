@@ -27,6 +27,7 @@ export class CharacterComponent {
     characters: Character[] = [];
     currentPage : number = 1;
     totalEntries : number = 1;
+    elementsPerPage : number = 2;
 
     constructor(private charaService: CharacterService) {}
     ngOnInit(): void {
@@ -35,19 +36,19 @@ export class CharacterComponent {
 
     getCharas(): void {
       if(this.sortBy === "Default")
-        this.charaService.getCharacters(this.currentPage)
+        this.charaService.getCharacters(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
       if(this.sortBy === "Level")
-        this.charaService.sortByLevel(this.currentPage)
+        this.charaService.sortByLevel(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
       if(this.sortBy === "Name")
-        this.charaService.sortByName(this.currentPage)
+        this.charaService.sortByName(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
       this.totalEntries = this.charaService.size();
     }
 
     addNewCharacter(): void {
-      let charaID = this.charaService.addCharacter({id: -1, name: '', currentLevel: -1, vision: '', affiliation: ''});
+      let charaID = this.charaService.addCharacter({id: -1, name: 'Name', currentLevel: 0, vision: 'anemo', affiliation: 'affiliation'});
       SaveService.save(this.charaService);
       window.location.replace('/detail/' + charaID);
     }

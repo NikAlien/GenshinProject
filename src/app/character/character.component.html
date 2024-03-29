@@ -10,8 +10,15 @@
     <button (click)="addNewCharacter()">Add</button>
 </div>
 <div id="list">
+    <div style="display: flex;">
+        <div></div>
+        <select id="elementsPerPage" [(ngModel)]="elementsPerPage" (ngModelChange)="getCharas()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
     <ul class="charas">
-        <li *ngFor="let chara of characters | paginate: {itemsPerPage: 2, currentPage: currentPage, totalItems: totalEntries}">
+        <li *ngFor="let chara of characters | paginate: {itemsPerPage: elementsPerPage, currentPage: currentPage, totalItems: totalEntries}">
             <a href="/detail/{{chara.id}}"> {{chara.name}} </a> 
             <a href="/detail/{{chara.id}}"><img src="../assets/image/{{chara.vision}}.png" class="image"></a>
             <p class="level"><strong>Lvl </strong>{{chara.currentLevel}}</p>
@@ -19,6 +26,8 @@
             <hr>
         </li>
     </ul>
-    <pagination-controls (pageChange)="updatePage($event)"></pagination-controls>
+    <div style="display: flex; justify-content: center;">
+        <pagination-controls (pageChange)="updatePage($event)"></pagination-controls>
+    </div>
 </div>
 

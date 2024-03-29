@@ -30,6 +30,8 @@ h1 {
 
 .labels {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 button {
@@ -58,13 +60,13 @@ label {
 }
 
 input {
-    width: 150px;
+    width: 192px;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 select {
-    width: 150px;
+    width: 200px;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;    
 }
