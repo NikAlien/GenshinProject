@@ -8,6 +8,7 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,4 +24,5 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
   providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

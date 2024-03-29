@@ -26,19 +26,29 @@ export class CharacterService implements Savable{
     SaveService.load(this);
   }
 
-  getCharacters(): Observable<Character[]> {
-    const charas = of(CHARACTERS)
+  getCharacters(page: number): Observable<Character[]> {
+    const charas = of(this.paginate(CHARACTERS, page, 2))
     return charas;
   }
 
-  sortByLevel(): Observable<Character[]> {
-    const charas = of(CHARACTERS.toSorted((a, b) => b.currentLevel - a.currentLevel))
+  sortByLevel(page: number): Observable<Character[]> {
+    const charas = of(this.paginate(CHARACTERS.toSorted((a, b) => b.currentLevel - a.currentLevel), page, 2))
     return charas;
   }
 
-  sortByName(): Observable<Character[]> {
-    const charas = of(CHARACTERS.toSorted((a, b) => a.name > b.name? 1 : -1))
+  sortByName(page: number): Observable<Character[]> {
+    const charas = of(this.paginate(CHARACTERS.toSorted((a, b) => a.name > b.name? 1 : -1), page, 2))
     return charas;
+  }
+
+  size() : number {
+    return CHARACTERS.length;
+  }
+
+  private paginate(who: any, page: number, elements: number) {
+    let start = elements * (page - 1);
+    if (start < 0) start = 0;
+    return who.slice(start, elements * page);
   }
 
   filterCharactersVision(vision: string): Character[] {

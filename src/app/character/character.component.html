@@ -11,7 +11,7 @@
 </div>
 <div id="list">
     <ul class="charas">
-        <li *ngFor="let chara of characters">
+        <li *ngFor="let chara of characters | paginate: {itemsPerPage: 2, currentPage: currentPage, totalItems: totalEntries}">
             <a href="/detail/{{chara.id}}"> {{chara.name}} </a> 
             <a href="/detail/{{chara.id}}"><img src="../assets/image/{{chara.vision}}.png" class="image"></a>
             <p class="level"><strong>Lvl </strong>{{chara.currentLevel}}</p>
@@ -19,5 +19,6 @@
             <hr>
         </li>
     </ul>
+    <pagination-controls (pageChange)="updatePage($event)"></pagination-controls>
 </div>
 

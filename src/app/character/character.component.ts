@@ -5,6 +5,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CharacterDetailComponent } from '../character-detail/character-detail.component';
 import { SaveService } from '../services/save.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   standalone: true,
@@ -12,7 +13,8 @@ import { SaveService } from '../services/save.service';
     NgFor,
     FormsModule,
     NgIf,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    NgxPaginationModule
   ],
   selector: 'app-character',
   templateUrl: './character.component.html',
@@ -23,6 +25,8 @@ export class CharacterComponent {
     title = "My Characters";
     sortBy = "Default";
     characters: Character[] = [];
+    currentPage : number = 1;
+    totalEntries : number = 1;
 
     constructor(private charaService: CharacterService) {}
     ngOnInit(): void {
@@ -31,20 +35,25 @@ export class CharacterComponent {
 
     getCharas(): void {
       if(this.sortBy === "Default")
-        this.charaService.getCharacters()
+        this.charaService.getCharacters(this.currentPage)
           .subscribe(characters => this.characters = characters);
       if(this.sortBy === "Level")
-        this.charaService.sortByLevel()
+        this.charaService.sortByLevel(this.currentPage)
           .subscribe(characters => this.characters = characters);
       if(this.sortBy === "Name")
-        this.charaService.sortByName()
+        this.charaService.sortByName(this.currentPage)
           .subscribe(characters => this.characters = characters);
-      
+      this.totalEntries = this.charaService.size();
     }
 
     addNewCharacter(): void {
       let charaID = this.charaService.addCharacter({id: -1, name: '', currentLevel: -1, vision: '', affiliation: ''});
       SaveService.save(this.charaService);
       window.location.replace('/detail/' + charaID);
+    }
+
+    updatePage(page : number) : void {
+      this.currentPage = page;
+      this.getCharas();
     }
 }
