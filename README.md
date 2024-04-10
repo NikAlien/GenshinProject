@@ -17,6 +17,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 + Tests
 ! Back-end server > in Progess
 - Back-end dataBase
+- Small adjustments for a more logic interface 
 ```
 
 ## Development server
