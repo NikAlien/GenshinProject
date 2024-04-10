@@ -30,7 +30,7 @@ export class CharacterDetailComponent {
 
     getCharacter(): void {
       const id = Number(this.route.snapshot.paramMap.get('id'));
-      this.chara = this.charaService.getCharacter(id);
+      this.charaService.getCharacter(id).subscribe(chara => this.chara = chara);
     }
 
     goBack(): void {
@@ -45,18 +45,20 @@ export class CharacterDetailComponent {
       if(this.chara){
         this.errorMessage = CharacterValidation.validate(this.chara);
         if(this.errorMessage.trim().length <= 0){
-          let charaID = this.charaService.updateCharacter(this.chara);
-          SaveService.save(this.charaService);
-          this.goBack();
+          this.charaService.updateCharacter(this.chara)
+          .subscribe(id => {
+            this.goBack();
+          });
         }
       }
     }
 
     deleteGoBack(): void {
       if(this.chara){
-        let charaID = this.charaService.deleteCharacter(this.chara);
-        SaveService.save(this.charaService);
-        this.goBack();
+        this.charaService.deleteCharacter(this.chara.id)
+        .subscribe(bool => {
+          this.goBack();
+        });
       }
     }
 }

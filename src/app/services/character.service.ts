@@ -4,11 +4,14 @@ import { Character } from '../character/character';
 import { Observable, of } from 'rxjs';
 import { Savable } from './savable';
 import { SaveService } from './save.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService implements Savable{
+
+  apiUrl = 'http://localhost:8080/api/v1/characters';
 
   saveData(): void {
     window.sessionStorage.setItem('CHARASERVICE', JSON.stringify(CHARACTERS));
@@ -22,12 +25,15 @@ export class CharacterService implements Savable{
       result.forEach(entity => CHARACTERS.push(entity))
     }
   }
-  constructor() { 
+  constructor(private http: HttpClient) { 
     SaveService.load(this);
   }
 
   getCharacters(page: number, elements: number): Observable<Character[]> {
-    const charas = of(this.paginate(CHARACTERS, page, elements))
+    const charas = this.http.get<Character[]>(this.apiUrl+'/page_'+ page, {
+      params: new HttpParams()
+      .set('number', elements)
+    });
     return charas;
   }
 
@@ -41,8 +47,8 @@ export class CharacterService implements Savable{
     return charas;
   }
 
-  size() : number {
-    return CHARACTERS.length;
+  size() : Observable<number> {
+    return this.http.get<number>(this.apiUrl + '/size');
   }
 
   private paginate(who: any, page: number, elements: number) {
@@ -56,35 +62,19 @@ export class CharacterService implements Savable{
     return charas;
   }
 
-  getCharacter(id: number): Character{
-    for(let i = 0; i < CHARACTERS.length; i++)
-      if(CHARACTERS[i].id === id)
-        return CHARACTERS[i];
-    return {id: -1, name: '', currentLevel: -1, vision: '', affiliation: ''};
+  getCharacter(id: number): Observable<Character>{
+    return this.http.get<Character>(this.apiUrl + '/id_' + id);
   }
 
-  addCharacter(character: Character): number {
-    if(CHARACTERS.length === 0)
-      character.id = 1;
-    else 
-      character.id = Math.max.apply(Math, CHARACTERS.map(function(chara) { return chara.id; })) + 1;
-    
-    CHARACTERS.push(character);
-    return character.id;
+  addCharacter(character: Character): Observable<number> {
+    return this.http.post<number>(this.apiUrl + '/insert', character);
   }
 
-  updateCharacter(character: Character): number {
-    let index = CHARACTERS.findIndex(chara => chara.id === character.id);
-    CHARACTERS[index] = character;
-    return character.id;
+  updateCharacter(character: Character): Observable<number> {
+    return this.http.put<number>(this.apiUrl + '/update_' + character.id, character);
   }
 
-  deleteCharacter(character: Character): boolean {
-    let index = CHARACTERS.findIndex(chara => chara.id == character.id);
-    if (index < 0) {
-      return false;
-    }
-    CHARACTERS.splice(index, 1);
-    return true;
+  deleteCharacter(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.apiUrl + '/delete_' + id);
   }
 }

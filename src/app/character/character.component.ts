@@ -37,20 +37,24 @@ export class CharacterComponent {
     getCharas(): void {
       if(this.sortBy === "Default")
         this.charaService.getCharacters(this.currentPage, this.elementsPerPage)
-          .subscribe(characters => this.characters = characters);
+          .subscribe(characters => {this.characters = characters; console.log(characters)});
       if(this.sortBy === "Level")
         this.charaService.sortByLevel(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
       if(this.sortBy === "Name")
         this.charaService.sortByName(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
-      this.totalEntries = this.charaService.size();
+      this.charaService.size()
+          .subscribe(size => this.totalEntries = size);
     }
 
     addNewCharacter(): void {
-      let charaID = this.charaService.addCharacter({id: -1, name: 'Name', currentLevel: 0, vision: 'anemo', affiliation: 'affiliation'});
-      SaveService.save(this.charaService);
-      window.location.replace('/detail/' + charaID);
+      var charID : number = -1;
+      this.charaService.addCharacter({id: -1, name: 'Name', currentLevel: 0, vision: 'anemo', affiliation: 'affiliation'})
+      .subscribe(id => {
+        charID = id;
+        window.location.replace('/detail/' + charID);
+      });
     }
 
     updatePage(page : number) : void {

@@ -7,6 +7,7 @@ import { CharacterComponent } from './character/character.component';
 import { CharacterDetailComponent } from './character-detail/character-detail.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
     FormsModule,
     CharacterComponent,
     CharacterDetailComponent,
-    PieChartComponent
+    PieChartComponent,
+    HttpClientModule
   ],
   providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent]
