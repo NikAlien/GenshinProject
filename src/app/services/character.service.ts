@@ -63,8 +63,8 @@ export class CharacterService implements Savable{
     return who.slice(start, elements * page);
   }
 
-  filterCharactersVision(vision: string): Character[] {
-    const charas = CHARACTERS.filter((chara) => chara.vision === vision)
+  filterCharactersVision(vision: string): Observable<Character[]> {
+    const charas = this.http.get<Character[]>(this.apiUrl+'/filtered/byVision/'+ vision);
     return charas;
   }
 
