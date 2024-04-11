@@ -4,8 +4,15 @@
   <a href="/pie-chart/"><img src="../assets/image/pie-chart-icon.png" id="pieChartLogo"></a>
 </header>
 <main>
-  <div class="center">
+  <div id="center">
     <router-outlet></router-outlet>
+  </div>
+  <div id = "errorMessage">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+    <img id="warningSign" src="../assets/image/warning_sign.png">
+    <h2>{{errorMessge}}</h2>
+    <div class="loader"></div>
+    </div>
   </div>
 </main>
 <footer class="footer">

@@ -37,7 +37,7 @@ export class CharacterComponent {
     getCharas(): void {
       if(this.sortBy === "Default")
         this.charaService.getCharacters(this.currentPage, this.elementsPerPage)
-          .subscribe(characters => {this.characters = characters; console.log(characters)});
+          .subscribe(characters => {this.characters = characters;});
       if(this.sortBy === "Level")
         this.charaService.sortByLevel(this.currentPage, this.elementsPerPage)
           .subscribe(characters => this.characters = characters);
