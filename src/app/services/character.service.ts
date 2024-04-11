@@ -38,12 +38,18 @@ export class CharacterService implements Savable{
   }
 
   sortByLevel(page: number, elements: number): Observable<Character[]> {
-    const charas = of(this.paginate(CHARACTERS.toSorted((a, b) => b.currentLevel - a.currentLevel), page, elements))
+    const charas = this.http.get<Character[]>(this.apiUrl+'/page/sorted/byLevel_'+ page, {
+      params: new HttpParams()
+      .set('number', elements)
+    });
     return charas;
   }
 
   sortByName(page: number, elements : number): Observable<Character[]> {
-    const charas = of(this.paginate(CHARACTERS.toSorted((a, b) => a.name > b.name? 1 : -1), page, elements))
+    const charas = this.http.get<Character[]>(this.apiUrl+'/page/sorted/byName_'+ page, {
+      params: new HttpParams()
+      .set('number', elements)
+    });
     return charas;
   }
 
