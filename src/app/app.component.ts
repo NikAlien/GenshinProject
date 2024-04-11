@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { fromEvent, merge, of, Subscription } from 'rxjs';
+import { fromEvent, merge, of, Subscription, delay, Observable, throwError } from 'rxjs';
 import { ViewEncapsulation } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   networkStatus$: Subscription = Subscription.EMPTY;
   errorMessge: string = 'Error accured: you are offline, please check for internet connection';
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
     this.checkNetworkStatus();
@@ -24,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.networkStatus$.unsubscribe();
   }
 
-  checkNetworkStatus() {
+  private checkNetworkStatus() {
     this.networkStatus = navigator.onLine;
     this.networkStatus$ = merge(
       of(null),
@@ -38,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-  displayDiv (): void {
+
+  private displayDiv (): void {
     const divCenter = document.getElementById('center');
     const divErrorMessage = document.getElementById('errorMessage');
     if(this.networkStatus){
@@ -47,14 +50,13 @@ export class AppComponent implements OnInit, OnDestroy {
         divErrorMessage.style.display = "none"; 
       if(divCenter)
         divCenter.style.display = "block";
+      return;
     }
-    else{
-      console.log('Remove div center')
-      if(divCenter)
-        divCenter.style.display = "none"; 
-      if(divErrorMessage)
-        divErrorMessage.style.display = "block";
-    }
+    console.log('Remove div center')
+    if(divCenter)
+      divCenter.style.display = "none"; 
+    if(divErrorMessage)
+      divErrorMessage.style.display = "block";
   }
 
 }
