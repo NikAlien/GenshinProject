@@ -42,8 +42,12 @@ export class CharacterService {
   }
 
   filterCharactersVision(vision: string): Observable<Character[]> {
-    const charas = this.http.get<Character[]>(this.apiUrl+'/filtered/byVision/'+ vision);
+    const charas = this.http.get<Character[]>(this.apiUrl + '/filtered/byVision/' + vision);
     return charas;
+  }
+
+  getPieChartData(): Observable<number[]> {
+    return this.http.get<number[]>(this.apiUrl + '/chartData');
   }
 
   getCharacter(id: number): Observable<Character>{
