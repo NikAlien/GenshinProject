@@ -28,10 +28,25 @@ export class CharacterComponent {
     currentPage : number = 1;
     totalEntries : number = 1;
     elementsPerPage : number = 2;
+    intervalId : any;
+
 
     constructor(private charaService: CharacterService) {}
     ngOnInit(): void {
       this.getCharas();
+      this.intervalId = setInterval(() => {
+        let newSize = 0;
+        this.charaService.size().subscribe(size => newSize = size);
+          if(this.totalEntries != newSize)
+            this.getCharas();
+      }, 5000)
+
+    }
+
+    ngOnDestroy() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
     }
 
     getCharas(): void {
