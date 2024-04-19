@@ -55,7 +55,7 @@ export class CharacterDetailComponent {
 
     deleteGoBack(): void {
       if(this.chara){
-        this.charaService.deleteCharacter(this.chara.id)
+        this.charaService.deleteCharacter(this.chara.characterId)
         .subscribe(bool => {
           this.goBack();
         });

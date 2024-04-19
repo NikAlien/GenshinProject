@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CharacterDetailComponent } from '../character-detail/character-detail.component';
 import { SaveService } from '../services/save.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Weapon } from '../weapon';
 
 @Component({
   standalone: true,
@@ -29,6 +30,7 @@ export class CharacterComponent {
     totalEntries : number = 1;
     elementsPerPage : number = 2;
     intervalId : any;
+    // defaultWeapon : Weapon = {id: -1, name: '', baseAttack: 0, additionalCharacteristic: '', characteristicNumbers: 0, characterList: []};
 
 
     constructor(private charaService: CharacterService) {}
@@ -65,7 +67,7 @@ export class CharacterComponent {
 
     addNewCharacter(): void {
       var charID : number = -1;
-      this.charaService.addCharacter({id: -1, name: 'Name', currentLevel: 0, vision: 'anemo', affiliation: 'affiliation'})
+      this.charaService.addCharacter({characterId: -1, name: 'Name', currentLevel: 0, vision: 'anemo', affiliation: 'affiliation', weapon: null})
       .subscribe(id => {
         charID = id;
         window.location.replace('/detail/' + charID);

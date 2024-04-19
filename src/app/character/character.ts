@@ -1,9 +1,12 @@
+import { Weapon } from "../weapon";
+
 export interface Character{
-    id: number;
+    characterId: number;
     name: string;
     currentLevel: number;
     vision: string;
     affiliation: string;
+    weapon: Weapon | null;
 }
 
 export class CharacterValidation{
