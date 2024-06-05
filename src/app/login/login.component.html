@@ -1,0 +1,20 @@
+<div id = "title">
+    <h1>{{title}}</h1>
+</div>
+<div id="detail">
+    <div>
+        <div class="labels">
+            <label for="user-name">User name: </label>
+            <input for="user-name" [(ngModel)]="user.userName">
+        </div>
+        <div class="labels">
+            <label for="password">Password: </label> 
+            <input id="password" [(ngModel)]="user.userPassword" type="password" required>
+        </div>
+        <span><b>{{getErrorMessage()}}</b></span>
+    </div>
+</div>
+<div style="display: flex; flex-wrap: nowrap; justify-content: space-around;">
+    <!-- <button (click)="goBack()">Register</button> -->
+    <button (click)="logIn()">Log In</button>
+</div>
