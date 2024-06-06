@@ -1,4 +1,5 @@
 import { Weapon } from "../weapon";
+import { User } from "../login/user";
 
 export interface Character{
     characterId: number;

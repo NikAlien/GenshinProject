@@ -15,18 +15,20 @@ export class CharacterService {
     // this.initUpdateSocket();
   }
 
-  getCharacters(page: number, elements: number): Observable<Character[]> {
+  getCharacters(page: number, elements: number, userId : number): Observable<Character[]> {
     const charas = this.http.get<Character[]>(this.apiUrl+'/page_'+ page, {
       params: new HttpParams()
       .set('number', elements)
+      .set('userId', userId)
     });
     return charas;
   }
 
-  sortByLevel(page: number, elements: number): Observable<Character[]> {
+  sortByLevel(page: number, elements: number, userId : number): Observable<Character[]> {
     const charas = this.http.get<Character[]>(this.apiUrl+'/page/sorted/byLevel_'+ page, {
       params: new HttpParams()
       .set('number', elements)
+      .set('userId', userId)
     });
     return charas;
   }
@@ -39,8 +41,11 @@ export class CharacterService {
     return charas;
   }
 
-  size() : Observable<number> {
-    return this.http.get<number>(this.apiUrl + '/size');
+  size(userId : number) : Observable<number> {
+    return this.http.get<number>(this.apiUrl + '/size', {
+      params: new HttpParams()
+      .set('userId', userId)
+    });
   }
 
   filterCharactersVision(vision: string): Observable<Character[]> {
@@ -57,8 +62,11 @@ export class CharacterService {
     return this.http.get<Character>(this.apiUrl + '/id_' + id);
   }
 
-  addCharacter(character: Character): Observable<number> {
-    return this.http.post<number>(this.apiUrl + '/insert', character);
+  addCharacter(character: Character, userId : number): Observable<number> {
+    return this.http.post<number>(this.apiUrl + '/insert', character, {
+      params: new HttpParams()
+      .set('userId', userId)
+    });
   }
 
   updateCharacter(character: Character): Observable<number> {
