@@ -13,6 +13,8 @@ h1 {
     border-radius: 25px;
     box-shadow: 7px 7px 10px #34B1C7;
     margin-bottom: 10px;
+    width: 40%;
+    margin-left: 25%;
 }
 
 #detail {
@@ -25,6 +27,8 @@ h1 {
     border-radius: 25px;
     box-shadow: 10px 10px 10px #34B1C7;
     height: 200px;
+    width: 40%;
+    margin-left: 25%;
     display: flex;
     justify-content: center;
 }
@@ -41,13 +45,13 @@ button {
     background-color: #081c2d;
     color: #cfeaed;
     border: none;
+    margin-top: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 7px;
     box-shadow: 3px 0px 3px #34B1C7;
-    margin-left: 5%;
     font-size: 17px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -58,12 +62,13 @@ button:hover {
 }
 
 label {
+    width: 90%;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 input {
-    width: 192px;
+    width: 90%;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -71,4 +76,17 @@ input {
 span {
     color: rgb(138, 7, 7);
     font-size: 20px;
+}
+
+p {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a:link {
+    text-decoration: underline;
+    color: #081c2d;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px #77cddd;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

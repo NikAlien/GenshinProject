@@ -24,6 +24,17 @@ export class LoginComponent {
     }
     
     ngOnInit(): void {
+      const user = document.getElementById("userLogo");
+      if(user)
+        user.style.display = "none"; 
+
+      const chart = document.getElementById("pieChartLogo");
+      if(chart)
+        chart.style.display = "none"; 
+
+      const out = document.getElementById("logOutLogo");
+      if(out)
+        out.style.display = "none"; 
     }
 
     getErrorMessage(): string {
