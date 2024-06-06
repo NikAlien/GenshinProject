@@ -9,12 +9,14 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

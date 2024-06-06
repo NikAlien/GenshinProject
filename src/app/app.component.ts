@@ -3,6 +3,7 @@ import { fromEvent, merge, of, Subscription, delay, Observable, throwError, retr
 import { ViewEncapsulation } from '@angular/core';
 import { catchError, map, repeat } from 'rxjs/operators';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   networkStatus$: Subscription = Subscription.EMPTY;
   errorMessge: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -65,24 +66,28 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-
-
   private displayDiv (): void {
     const divCenter = document.getElementById('center');
     const divErrorMessage = document.getElementById('errorMessage');
     if(this.networkStatus && this.backEndStatus){
-      console.log('Show div center');
+      // console.log('Show div center');
       if(divErrorMessage)
         divErrorMessage.style.display = "none"; 
       if(divCenter)
         divCenter.style.display = "block";
       return;
     }
-    console.log('Remove div center')
+    // console.log('Remove div center')
     if(divCenter)
       divCenter.style.display = "none"; 
     if(divErrorMessage)
       divErrorMessage.style.display = "block";
+  }
+
+  confirmChoice(): void {
+    if (confirm("You sure want to log out?")) {
+      window.location.replace('http://localhost:4200/login');
+    }
   }
 
 }
