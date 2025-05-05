@@ -4,6 +4,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { catchError, map, repeat } from 'rxjs/operators';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginService } from './services/login.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   networkStatus$: Subscription = Subscription.EMPTY;
   errorMessge: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private logInService: LoginService) {
   }
 
   ngOnInit(): void {
@@ -82,12 +83,6 @@ export class AppComponent implements OnInit, OnDestroy {
       divCenter.style.display = "none"; 
     if(divErrorMessage)
       divErrorMessage.style.display = "block";
-  }
-
-  confirmChoice(): void {
-    if (confirm("You sure want to log out?")) {
-      window.location.replace('http://localhost:4200/login');
-    }
   }
 
 }

@@ -32,10 +32,6 @@ export class RegisterComponent {
     const chart = document.getElementById("pieChartLogo");
     if(chart)
       chart.style.display = "none"; 
-
-    const out = document.getElementById("logOutLogo");
-    if(out)
-      out.style.display = "none"; 
   }
 
   getErrorMessage(): string {

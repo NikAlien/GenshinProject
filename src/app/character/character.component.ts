@@ -8,6 +8,7 @@ import { SaveService } from '../services/save.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Weapon } from '../weapon';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   standalone: true,
@@ -24,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CharacterComponent {
-    userID = Number(this.router.snapshot.paramMap.get('id'));
+    userID = 1;
     title = "My Characters";
     sortBy = "Default";
     characters: Character[] = [];
@@ -35,8 +36,12 @@ export class CharacterComponent {
     // defaultWeapon : Weapon = {id: -1, name: '', baseAttack: 0, additionalCharacteristic: '', characteristicNumbers: 0, characterList: []};
 
 
-    constructor(private charaService: CharacterService, private router : ActivatedRoute) {}
+    constructor(private charaService: CharacterService, private router : ActivatedRoute, private logInService: LoginService) {
+      this.logInService.getUserID().subscribe(id => this.userID = id);
+    }
     ngOnInit(): void {
+      if(this.logInService.getToken() == null)
+        window.location.replace('/login');
       this.getCharas();
       this.intervalId = setInterval(() => {
         let newSize = 0;
@@ -79,5 +84,11 @@ export class CharacterComponent {
     updatePage(page : number) : void {
       this.currentPage = page;
       this.getCharas();
+    }
+
+    logOut(): void {
+      this.logInService.logout();
+      this.characters = [];
+      window.location.replace('http://localhost:4200/login');
     }
 }

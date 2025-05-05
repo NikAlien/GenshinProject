@@ -24,14 +24,14 @@ h2 {
 #userLogo {
     position: relative;
     max-width: 2.5%;
-    left: 68%;
+    left: 70%;
     padding-bottom: 20px;
 }
 
 #pieChartLogo {
     position: relative;
     max-width: 2.5%;
-    left: 70%;
+    left: 72%;
     padding-bottom: 20px;
 }
 
@@ -94,3 +94,22 @@ h2 {
     background-image: linear-gradient(to bottom, rgba(159, 187, 186, 0), rgba(159, 187, 186, 100));
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
+
+  button {
+    background-color: #081c2d;
+    color: #cfeaed;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 7px;
+    box-shadow: 3px 0px 3px #34B1C7;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button:hover {
+    background-color: #EBDB62;
+    color: #081c2d;
+}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from './user';
 import { ActivatedRoute } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,10 @@ export class LoginComponent {
     title = "Log In";
     inputValue = "";
     errorMessage = "";
+    loginSuccess = false;
     
 
-    constructor( private route: ActivatedRoute,
+    constructor( private router: Router,
       private logInService: LoginService) {
     }
     
@@ -31,10 +33,6 @@ export class LoginComponent {
       const chart = document.getElementById("pieChartLogo");
       if(chart)
         chart.style.display = "none"; 
-
-      const out = document.getElementById("logOutLogo");
-      if(out)
-        out.style.display = "none"; 
     }
 
     getErrorMessage(): string {
@@ -43,16 +41,17 @@ export class LoginComponent {
 
     logIn(): void {
       if(this.user.userName != "" && this.user.userPassword != ""){
-          this.logInService.getUserID(this.user.userName, this.user.userPassword)
-          .subscribe(id => {
-            console.log(id);
-            if(id == -1) {
+          this.logInService.login(this.user)
+          .subscribe(response => {
+            console.log(response);
+            if(response.token == "Error") {
               this.errorMessage = "Fileds not correct";
               this.getErrorMessage();
             }
             else {
               this.errorMessage = "";
-              this.goToList(id);
+              this.loginSuccess = true;
+              this.goToList();
             }
           });
       }
@@ -62,8 +61,8 @@ export class LoginComponent {
       }
     }
 
-    goToList(id: number): void {
-      window.location.replace('/characterList/user/' + id);
+    goToList(): void {
+     this.router.navigate(['/characterList'])
     }
 
 }

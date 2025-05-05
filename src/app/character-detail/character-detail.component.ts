@@ -34,7 +34,7 @@ export class CharacterDetailComponent {
     }
 
     goBack(): void {
-      window.history.go(-1);
+      window.location.replace('/characterList');
     }
 
     getErrorMessage(): string {
